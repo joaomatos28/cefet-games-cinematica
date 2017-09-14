@@ -4,6 +4,7 @@ import br.cefetmg.games.movement.AlgoritmoMovimentacao;
 import br.cefetmg.games.movement.Direcionamento;
 import br.cefetmg.games.movement.Pose;
 import com.badlogic.gdx.Input.Keys;
+import static java.lang.Math.random;
 
 /**
  * Movimenta o agente em uma direção aleatória, vagando pelo cenário.
@@ -29,12 +30,9 @@ public class Vagar extends AlgoritmoMovimentacao {
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
 
-        // calcula que direção tomar (configura um objeto Direcionamento 
-        // e o retorna)
-        // ...
-        // super.alvo já contém a posição do alvo
-        // agente (parâmetro) é a pose do agente que estamos guiando
-        // ...
+        double  random_entre_um_e_menos_um = random() - random();
+        output.velocidade = agente.getOrientacaoComoVetor().scl(maxVelocidade);
+        output.rotacao = random_entre_um_e_menos_um*maxAngular;
         return output;
     }
 
