@@ -18,7 +18,7 @@ public class Chegar extends AlgoritmoMovimentacao {
         
     }
 
-    protected Buscar(char nome, float maxVelocidade,float raio,float timeToTarget) {
+    protected Chegar(char nome, float maxVelocidade,float raio,float timeToTarget) {
         super(nome);
         this.maxVelocidade = maxVelocidade;
         this.raio = raio;
