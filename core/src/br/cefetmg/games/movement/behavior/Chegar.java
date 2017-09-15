@@ -6,22 +6,24 @@ import br.cefetmg.games.movement.Pose;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector3;
 
-/**
- * Guia o agente na direção do alvo.
- *
- * @author Flávio Coutinho <fegemo@cefetmg.br>
- */
-public class Buscar extends AlgoritmoMovimentacao {
+
+public class Chegar extends AlgoritmoMovimentacao {
 
     private static final char NOME = 's';
-
-    public Buscar(float maxVelocidade) {
-        this(NOME, maxVelocidade);
+    float raio;
+    float timeToTarget;
+    
+    public Chegar(float maxVelocidade,float raio,float timeToTarget) {
+        this(NOME, maxVelocidade,raio,timeToTarget);
+        
     }
 
-    protected Buscar(char nome, float maxVelocidade) {
+    protected Buscar(char nome, float maxVelocidade,float raio,float timeToTarget) {
         super(nome);
         this.maxVelocidade = maxVelocidade;
+        this.raio = raio;
+        this.timeToTarget = timeToTarget;
+        
     }
 
     @Override
@@ -35,12 +37,7 @@ public class Buscar extends AlgoritmoMovimentacao {
         agente.olharNaDirecaoDaVelocidade(output.velocidade);
         
         
-        // calcula que direção tomar (configura um objeto Direcionamento 
-        // e o retorna)
-        // ...
-        // super.alvo já contém a posição do alvo
-        // agente (parâmetro) é a pose do agente que estamos guiando
-        // ...
+
         return output;
     }
 
