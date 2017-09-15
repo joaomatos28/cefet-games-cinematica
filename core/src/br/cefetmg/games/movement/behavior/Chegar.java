@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Chegar extends AlgoritmoMovimentacao {
 
-    private static final char NOME = 's';
+    private static final char NOME = 'c';
     float raio;
     float timeToTarget;
     
@@ -33,6 +33,15 @@ public class Chegar extends AlgoritmoMovimentacao {
         output.velocidade = new Vector3(super.alvo.getObjetivo().x - agente.posicao.x,
                                         super.alvo.getObjetivo().y - agente.posicao.y,
                                         super.alvo.getObjetivo().z - agente.posicao.z);
+        
+        if(output.velocidade.len()<raio) {
+            output.velocidade.set(0, 0, 0);
+            return output;
+        }
+        
+        output.velocidade.scl(1/timeToTarget);
+        output.velocidade.nor();
+        output.velocidade.scl(maxVelocidade);
         output.velocidade.nor().scl(maxVelocidade);
         agente.olharNaDirecaoDaVelocidade(output.velocidade);
         
@@ -43,6 +52,6 @@ public class Chegar extends AlgoritmoMovimentacao {
 
     @Override
     public int getTeclaParaAtivacao() {
-        return Keys.S;
+        return Keys.C;
     }
 }
